@@ -23,7 +23,7 @@ import firstgame.level.RandomLevel;
  * @author Markus
  *
  */
-//This game base on a youtube game development tutorial
+//This game base on a Youtube game development tutorial
 //by TheChernoProject.
 //The tutorial is available under:
 //http://www.youtube.com/watch?v=GFYT7Lqt1h8&list=PLlrATfBNZ98eOOCk2fOFg7Qg5yoQfFAdf
