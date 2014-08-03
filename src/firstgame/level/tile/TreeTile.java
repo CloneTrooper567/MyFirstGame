@@ -34,6 +34,7 @@ public class TreeTile extends Tile
 	@Override
 	public void render(int x, int y, Screen screen)
 	{
+		//This tree needs 32x32 pixels
 		screen.renderTile(x << 4, y << 4, this);
 	}
 	//===========================================

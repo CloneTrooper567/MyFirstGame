@@ -17,16 +17,16 @@ import firstgame.entity.mod.Player;
 import firstgame.graphics.Screen;
 import firstgame.input.Keyboard;
 import firstgame.level.Level;
-import firstgame.level.RandomLevel;
+import firstgame.level.SpwanLevel;
 
 /**
  * @author Markus
  *
  */
-//This game base on a Youtube game development tutorial
-//by TheChernoProject.
-//The tutorial is available under:
-//http://www.youtube.com/watch?v=GFYT7Lqt1h8&list=PLlrATfBNZ98eOOCk2fOFg7Qg5yoQfFAdf
+// This game base on a Youtube game development tutorial
+// by TheChernoProject.
+// The tutorial is available under:
+// http://www.youtube.com/watch?v=GFYT7Lqt1h8&list=PLlrATfBNZ98eOOCk2fOFg7Qg5yoQfFAdf
 public class Game extends Canvas implements Runnable
 {
 
@@ -70,7 +70,7 @@ public class Game extends Canvas implements Runnable
 
 		key = new Keyboard();
 		screen = new Screen(width, height);
-		level = new RandomLevel(128, 128);
+		level = new SpwanLevel("/text/spwanLevel.png");
 		player = new Player(key);
 		frame = new JFrame(GAME_TITLE);
 
@@ -90,14 +90,12 @@ public class Game extends Canvas implements Runnable
 		int frames = 0;
 		int updates = 0;
 		requestFocus();
-		while (running)
-		{
+		while (running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
 			lastTime = now;
 
-			while (delta >= 1)
-			{
+			while (delta >= 1) {
 				update();
 				updates++;
 				delta--;
@@ -106,8 +104,7 @@ public class Game extends Canvas implements Runnable
 			render();
 			frames++;
 
-			if (System.currentTimeMillis() - timer >= 1000)
-			{
+			if (System.currentTimeMillis() - timer >= 1000) {
 				timer += 1000;
 				frame.setTitle(GAME_TITLE + "    |   fps: " + frames + " ups: "
 						+ updates);
@@ -128,11 +125,9 @@ public class Game extends Canvas implements Runnable
 	public synchronized void stop()
 	{
 		running = false;
-		try
-		{
+		try {
 			thread.join();
-		} catch (InterruptedException e)
-		{
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
@@ -147,8 +142,7 @@ public class Game extends Canvas implements Runnable
 	{
 		BufferStrategy bs = getBufferStrategy();
 
-		if (bs == null)
-		{
+		if (bs == null) {
 			createBufferStrategy(3);
 			return;
 		}
@@ -159,8 +153,7 @@ public class Game extends Canvas implements Runnable
 		int yScroll = player.y - screen.height / 2;
 		level.render(xScroll, yScroll, screen);
 		player.render(screen);
-		for (int i = 0; i < pixels.length; i++)
-		{
+		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
