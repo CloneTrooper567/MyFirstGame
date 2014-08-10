@@ -40,7 +40,7 @@ public class RandomLevel extends Level
 		{
 			for (int x = 0; x < width; x++)
 			{
-				tileInt[x + y * width] = random.nextInt(4);
+				tiles[x + y * width] = random.nextInt(4);
 			}
 		}
 	}
